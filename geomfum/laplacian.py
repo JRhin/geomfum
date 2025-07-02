@@ -2,6 +2,9 @@
 
 import abc
 
+import networkx as nx
+import numpy as np
+
 import geomstats.backend as gs
 
 import geomfum.backend as xgs
@@ -31,6 +34,14 @@ class BaseLaplacianFinder(abc.ABC):
             Mass matrix.
         """
 
+class GraphLaplacianFinder(BaseLaplacianFinder):
+    def __call__(self, shape):
+        """
+        """
+        stiffness_matrix = nx.laplacian_matrix(shape.graph)
+        mass_matrix = np.eye(stiffness_matrix.shape[0])
+        return gs.from_numpy(stiffness_matrix), gs.from_numpy(mass_matrix)
+        
 
 class LaplacianFinder(MeshWhichRegistryMixins, BaseLaplacianFinder):
     """Algorithm to find the Laplacian."""

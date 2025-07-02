@@ -8,7 +8,7 @@ from geomfum._registry import (
     FaceValuedGradientRegistry,
     WhichRegistryMixins,
 )
-from geomfum.laplacian import LaplacianFinder, LaplacianSpectrumFinder
+from geomfum.laplacian import LaplacianFinder, GraphLaplacianFinder, LaplacianSpectrumFinder
 
 # TODO: remove functional; simply use operator
 
